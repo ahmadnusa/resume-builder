@@ -11,10 +11,20 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.config({
-    extends: ["next/core-web-vitals", "next/typescript", "prettier"],
+    extends: [
+      "next/core-web-vitals",
+      "next/typescript",
+      "prettier",
+      "plugin:tailwindcss/recommended",
+    ],
     rules: {
       "@typescript-eslint/no-require-imports": "warn",
-      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          ignoreRestSiblings: true,
+        },
+      ],
     },
     ignorePatterns: ["src/components/ui"],
   }),
