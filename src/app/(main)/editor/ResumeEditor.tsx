@@ -1,10 +1,11 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
 import { useSearchParams } from "next/navigation"
 import Breadcrumbs from "./Breadcrumbs"
+import Footer from "./Footer"
 import { steps } from "./steps"
+import { useState } from "react"
+import { Resumevalues } from "@/lib/validation"
 
 // interface ResumeEditorProps {
 //   resumeToEdit: ResumeServerData | null
@@ -13,9 +14,7 @@ import { steps } from "./steps"
 export default function ResumeEditor() {
   const searchParams = useSearchParams()
 
-  // const [resumeData, setResumeData] = useState<Resumevalues>(
-  //   resumeToEdit ? mapToResumeValues(resumeToEdit) : {}
-  // )
+  const [resumeData, setResumeData] = useState<Resumevalues>({})
 
   const currentStep = searchParams.get("step") || steps[0].key
 
@@ -42,26 +41,20 @@ export default function ResumeEditor() {
         <div className='absolute inset-y-0 flex w-full'>
           <div className='w-full space-y-6 overflow-y-auto p-3 md:block md:w-1/2'>
             <Breadcrumbs currentStep={currentStep} setCurrentStep={setStep} />
-            {FormComponent && <FormComponent />}
+            {FormComponent && (
+              <FormComponent
+                resumeData={resumeData}
+                setResumeData={setResumeData}
+              />
+            )}
           </div>
           <div className='grow md:border-r' />
-          <div className='hidden w-1/2 md:flex'>right</div>
+          <div className='hidden w-1/2 md:flex'>
+            <pre>{JSON.stringify(resumeData, null, 2)}</pre>
+          </div>
         </div>
       </main>
-      <footer className='w-full border-t px-3 py-5'>
-        <div className='mx-auto flex max-w-7xl flex-wrap justify-between gap-3'>
-          <div className='flex items-center gap-3'>
-            <Button variant='secondary'>Previous step</Button>
-            <Button>Next step</Button>
-          </div>
-          <div className='flex items-center gap-3'>
-            <Button variant={"brutal"} asChild>
-              <Link href='/resumes'>close</Link>
-            </Button>
-            <p>saving...</p>
-          </div>
-        </div>
-      </footer>
+      <Footer currentStep={currentStep} setCurrentStep={setStep} />
     </div>
   )
 }
