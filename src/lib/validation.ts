@@ -7,7 +7,7 @@ export const generalInfoSchema = z.object({
   description: optionalString,
 })
 
-export type GeneralInfoValue = z.infer<typeof generalInfoSchema>
+export type GeneralInfoValues = z.infer<typeof generalInfoSchema>
 
 export const personalInfoSchema = z.object({
   photo: z
@@ -86,7 +86,7 @@ export const resumeSchema = z.object({
   // borderStyle: optionalString,
 })
 
-export type Resumevalues = Omit<z.infer<typeof resumeSchema>, "photo"> & {
+export type ResumeValues = Omit<z.infer<typeof resumeSchema>, "photo"> & {
   id?: string
   photo?: File | string | null
 }

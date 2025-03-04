@@ -1,8 +1,8 @@
-import { Resumevalues } from "./validation"
+import { ResumeValues } from "./validation"
 
 export interface EditorFormProps {
-  resumeData: Resumevalues
-  setResumeData: (data: Resumevalues) => void
+  resumeData: ResumeValues
+  setResumeData: (data: ResumeValues) => void
 }
 
 // export const resumeDataInclude = {
