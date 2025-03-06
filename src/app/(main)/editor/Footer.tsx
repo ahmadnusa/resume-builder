@@ -2,13 +2,24 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import React from "react"
 import { steps } from "./steps"
+import { FileUserIcon, PenLineIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 interface FooterProps {
   currentStep: string
   setCurrentStep: (step: string) => void
+  showSmResumePreview: boolean
+  setShowSmResumePreview: (show: boolean) => void
+  isSaving: boolean
 }
 
-export default function Footer({ currentStep, setCurrentStep }: FooterProps) {
+export default function Footer({
+  currentStep,
+  setCurrentStep,
+  isSaving,
+  setShowSmResumePreview,
+  showSmResumePreview,
+}: FooterProps) {
   const previousStep = steps.find(
     (_, index) => steps[index + 1]?.key === currentStep,
   )?.key
@@ -36,11 +47,29 @@ export default function Footer({ currentStep, setCurrentStep }: FooterProps) {
             Next step
           </Button>
         </div>
+        <Button
+          variant='brutal'
+          size='icon'
+          onClick={() => setShowSmResumePreview(!showSmResumePreview)}
+          className='bg-slate-500 md:hidden'
+          title={
+            showSmResumePreview ? "Show input form" : "Show resume preview"
+          }
+        >
+          {showSmResumePreview ? <PenLineIcon /> : <FileUserIcon />}
+        </Button>
         <div className='flex items-center gap-3'>
-          <Button variant={"brutal"} className='bg-slate-500' asChild>
-            <Link href='/resumes'>close</Link>
+          <Button variant='brutal' className='bg-slate-500' asChild>
+            <Link href='/resumes'>Close</Link>
           </Button>
-          <p>saving...</p>
+          <p
+            className={cn(
+              "text-muted-foreground opacity-0",
+              isSaving && "opacity-100",
+            )}
+          >
+            saving...
+          </p>
         </div>
       </div>
     </footer>

@@ -7,6 +7,7 @@ import { steps } from "./steps"
 import { useState } from "react"
 import { ResumeValues } from "@/lib/validation"
 import ResumePreviewSection from "./ResumePreviewSection"
+import { cn } from "@/lib/utils"
 
 // interface ResumeEditorProps {
 //   resumeToEdit: ResumeServerData | null
@@ -16,6 +17,8 @@ export default function ResumeEditor() {
   const searchParams = useSearchParams()
 
   const [resumeData, setResumeData] = useState<ResumeValues>({})
+
+  const [showSmResumePreview, setShowSmResumePreview] = useState(false)
 
   const currentStep = searchParams.get("step") || steps[0].key
 
@@ -40,7 +43,12 @@ export default function ResumeEditor() {
       </header>
       <main className='relative grow'>
         <div className='absolute inset-y-0 flex w-full'>
-          <div className='w-full space-y-6 overflow-y-auto p-3 md:block md:w-1/2'>
+          <div
+            className={cn(
+              "w-full space-y-6 overflow-y-auto p-3 md:block md:w-1/2",
+              showSmResumePreview && "hidden",
+            )}
+          >
             <Breadcrumbs currentStep={currentStep} setCurrentStep={setStep} />
             {FormComponent && (
               <FormComponent
@@ -53,10 +61,17 @@ export default function ResumeEditor() {
           <ResumePreviewSection
             resumeData={resumeData}
             setResumeData={setResumeData}
+            className={cn(showSmResumePreview && "flex")}
           />
         </div>
       </main>
-      <Footer currentStep={currentStep} setCurrentStep={setStep} />
+      <Footer
+        currentStep={currentStep}
+        setCurrentStep={setStep}
+        showSmResumePreview={showSmResumePreview}
+        setShowSmResumePreview={setShowSmResumePreview}
+        isSaving={false}
+      />
     </div>
   )
 }
