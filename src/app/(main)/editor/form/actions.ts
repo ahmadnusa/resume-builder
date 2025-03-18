@@ -119,7 +119,7 @@ export async function generateWorkExperience(
       position: aiResponse.match(/Job Title: (.*)/)?.[1] || "",
       company: aiResponse.match(/Company: (.*)/)?.[1] || "",
       description: (
-        aiResponse.match(/Description:\n([\s\S]*)/)?.[1] || ""
+        aiResponse.match(/Description:([\s\S]*)/)?.[1] || ""
       ).trim(),
       startDate: aiResponse.match(/Start Date: (\d{4}-\d{2}-\d{2})/)?.[1],
       endDate: aiResponse.match(/End Date: (\d{4}-\d{2}-\d{2})/)?.[1],
