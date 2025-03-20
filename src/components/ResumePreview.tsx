@@ -3,17 +3,19 @@ import { cn } from "@/lib/utils"
 import { ResumeValues } from "@/lib/validation"
 import { formatDate } from "date-fns"
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { Badge } from "./ui/badge"
 import { BorderStyles } from "@/app/(main)/editor/BorderStyleButton"
 
 interface ResumePreviewProps {
   resumeData: ResumeValues
+  contentRef?: React.Ref<HTMLDivElement>
   className?: string
 }
 
 export default function ResumePreview({
   resumeData,
+  contentRef,
   className,
 }: ResumePreviewProps) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -33,6 +35,8 @@ export default function ResumePreview({
         style={{
           zoom: (1 / 794) * width,
         }}
+        ref={contentRef}
+        id='resumePreviewContent'
       >
         <PersonalInfoHeader resumeData={resumeData} />
         <SummarySection resumeData={resumeData} />
@@ -217,7 +221,7 @@ function EducationSection({ resumeData }: ResumeSectionProps) {
           borderColor: colorHex,
         }}
       />
-      <div className='space-y-3'>
+      <div className='break-inside-avoid space-y-3'>
         <p
           className='text-lg font-semibold'
           style={{
