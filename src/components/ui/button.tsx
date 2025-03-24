@@ -23,6 +23,8 @@ const buttonVariants = cva(
           "rounded-sm border-2 border-black bg-blue-500 px-8 py-4 text-white shadow-[4px_4px_0_0_#000] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none dark:hover:shadow-none dark:border-white dark:shadow-[4px_4px_0_0_#fff]",
         "brutal-normal":
           "rounded-sm border-2 border-black bg-white px-8 py-4 shadow-[4px_4px_0_0_#000] transition-all hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none dark:hover:shadow-none dark:border-white dark:bg-zinc-800 dark:text-white dark:shadow-[4px_4px_0_0_#fff]",
+        premium:
+          "bg-gradient-to-r from-green-600 to-green-400 text-white shadow hover:from-green-600/90 hover:to-green-400/90 ",
       },
       size: {
         default: "h-9 px-4 py-2",
