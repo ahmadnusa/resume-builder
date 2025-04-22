@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { EditorFormProps } from "@/lib/type"
-import { generalInfoSchema, GeneralInfoValue } from "@/lib/validation"
+import { generalInfoSchema, GeneralInfoValues } from "@/lib/validation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useEffect } from "react"
 import { useForm } from "react-hook-form"
@@ -17,7 +17,7 @@ export default function GeneralInfoForm({
   resumeData,
   setResumeData,
 }: EditorFormProps) {
-  const form = useForm<GeneralInfoValue>({
+  const form = useForm<GeneralInfoValues>({
     resolver: zodResolver(generalInfoSchema),
     defaultValues: {
       title: resumeData.title || "",
