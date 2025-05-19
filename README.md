@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Full-Stack SaaS Resume Builder
 
-## Getting Started
+A professional full-stack SaaS application to create, customize, and manage resumes with subscription-based access and AI-powered autofill features.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- User Authentication & Subscription management with Clerk and Stripe Checkout  
+- Multi-tier subscription plans and customer portal  
+- AI-powered auto-fill using ChatGPT API  
+- Multi-step dynamic forms with React Hook Form & useFieldArray  
+- Drag & drop reordering of resume sections using dnd-kit  
+- Autosave changes with debounce for smooth user experience  
+- Resume design customizations with live preview  
+- Image uploads stored on Vercel Blob storage  
+- Input validation on frontend and backend using Zod schemas  
+- Print or save resume as PDF  
+- URL state management with search params for easy sharing  
+- Responsive UI with dark, light, and system themes  
+- Global dialogs and state management using Zustand  
+- Intelligent caching and optimized deployment on Vercel  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Frontend: Next.js 15, React, TypeScript, Tailwind CSS, Shadcn UI  
+- Backend: Next.js API routes, Prisma ORM, PostgreSQL  
+- Authentication: Clerk  
+- Payment: Stripe Checkout  
+- AI Integration: OpenAI ChatGPT API  
+- State Management: Zustand  
+- Drag & Drop: dnd-kit  
+- Validation: Zod, React Hook Form  
+- Deployment: Vercel  
